@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#b8e7ee">
+    <meta name="description" content="Take a tiny explorer on a big skyward adventure. Leap between floating islands, gather gems, and see how far you can fly in Skybund.">
+    <meta property="og:title" content="Skybund — little leaps, big skies">
+    <meta property="og:description" content="A bright, replayable sky-island adventure. How far can you wander?">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/assets/cover-Dw9REhPX.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Skybund — little leaps, big skies">
+    <meta name="twitter:description" content="A bright, replayable sky-island adventure. How far can you wander?">
+    <title>Skybund — little leaps, big skies</title>
+    <link rel="icon" href="/assets/cover-Dw9REhPX.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-Cw9R4nVC.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CeTeurZv.css">
+  </head>
+  <body>
+    <main class="game-shell" aria-label="Skybund game">
+      <div id="game-world" class="game-world" role="application" aria-label="Skybund floating island game world" data-testid="game-world">
+        <div class="world-sky" aria-hidden="true"></div>
+        <div class="world-art" aria-hidden="true"></div>
+        <div class="world-vignette" aria-hidden="true"></div>
+
+        <div id="loading-screen" class="loading-screen" aria-live="polite" hidden data-testid="loading-screen">
+          <span class="loading-orbit" aria-hidden="true"><i></i><i></i><i></i></span>
+          <p>Finding the first island…</p>
+        </div>
+
+        <header class="topbar">
+          <a class="brand" href="./" aria-label="Skybund home" data-testid="brand-home">
+            <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>SKYBUND</span>
+          </a>
+          <div id="identity-badge" class="identity-badge" data-testid="identity-badge" aria-label="Player identity">
+            <span class="identity-dot" aria-hidden="true"></span>
+            <span id="player-name">Player not identified</span>
+            <span class="identity-separator" aria-hidden="true"></span>
+            <span id="player-account" class="account-label">Guest</span>
+          </div>
+          <div class="top-actions">
+            <span id="connection-status" class="connection-status" role="status" aria-live="polite" data-testid="connection-status">
+              <span aria-hidden="true"></span> Offline ready
+            </span>
+            <button id="sound-button" class="icon-button sound-button" type="button" aria-label="Toggle sound" aria-pressed="false" data-testid="sound-button">
+              <svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Z"/><path d="M16 9.5a4 4 0 0 1 0 5M18.5 7a7.5 7.5 0 0 1 0 10"/></svg>
+              <svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4ZM17 9l4 6M21 9l-4 6"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <section class="hud" aria-label="Run status" data-testid="game-hud">
+          <div class="stat-pill score-pill">
+            <span class="stat-icon score-icon" aria-hidden="true">✦</span>
+            <span class="stat-copy"><small>SKY SCORE</small><strong id="score-value">0</strong></span>
+          </div>
+          <div class="stat-pill gem-pill">
+            <span class="stat-icon gem-icon" aria-hidden="true">◆</span>
+            <span class="stat-copy"><small>GEMS</small><strong id="gem-value">0</strong></span>
+          </div>
+          <div class="stat-pill distance-pill">
+            <span class="stat-icon distance-icon" aria-hidden="true">↗</span>
+            <span class="stat-copy"><small>WANDERED</small><strong><span id="distance-value">0</span><em> m</em></strong></span>
+          </div>
+          <button id="pause-button" class="icon-button pause-button" type="button" aria-label="Pause game" data-testid="pause-button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h3v14H8zM15 5h3v14h-3z"/></svg>
+          </button>
+        </section>
+
+        <div class="world-caption" aria-hidden="true">
+          <span class="caption-line"></span><span>THE CLOUDLINE ARCHIPELAGO</span><span class="caption-line"></span>
+        </div>
+
+        <section id="start-screen" class="screen-card start-card" role="dialog" aria-modal="true" aria-labelledby="start-title" data-testid="start-screen">
+          <div class="card-eyebrow"><span class="eyebrow-star">✦</span> A LITTLE SKYWARD ADVENTURE</div>
+          <h1 id="start-title">Small steps.<br><span>Endless sky.</span></h1>
+          <p class="intro-copy">Leap from island to island. Scoop up sky gems. See what’s waiting past the clouds.</p>
+          <button id="start-button" class="button button-primary" type="button" data-testid="start-button">
+            <span>Take off</span><span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+          <div class="card-foot">
+            <button id="sign-in-button" class="text-button" type="button" aria-label="Sign in to Start.ng" data-testid="sign-in-button">Sign in to save your scores <span aria-hidden="true">↗</span></button>
+            <span class="foot-note">No sign-in needed to play</span>
+          </div>
+          <button id="leaderboard-button" class="leaderboard-link" type="button" aria-haspopup="dialog" aria-controls="leaderboard-panel" data-testid="leaderboard-button">
+            <span class="trophy" aria-hidden="true">♜</span> Sky league <span class="leaderboard-link-arrow" aria-hidden="true">→</span>
+          </button>
+        </section>
+
+        <section id="pause-screen" class="screen-card pause-card" role="dialog" aria-modal="true" aria-labelledby="pause-title" hidden data-testid="pause-screen">
+          <div class="pause-glyph" aria-hidden="true"><span></span><span></span></div>
+          <div class="card-eyebrow">CATCH YOUR BREATH</div>
+          <h2 id="pause-title">Paused <span class="title-cloud">☁</span></h2>
+          <p class="intro-copy">The islands will be right where you left them.</p>
+          <button id="resume-button" class="button button-primary" type="button" data-testid="resume-button"><span>Back to the sky</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+          <p class="keyboard-hint"><kbd>Esc</kbd> to resume</p>
+        </section>
+
+        <section id="gameover-screen" class="screen-card gameover-card" role="dialog" aria-modal="true" aria-labelledby="gameover-title" hidden data-testid="gameover-screen">
+          <div class="card-eyebrow"><span class="eyebrow-star">✦</span> WHAT A WANDER</div>
+          <h2 id="gameover-title">Cloud nine<br><span>was close.</span></h2>
+          <p class="intro-copy">Every leap is a new way up. Ready for another go?</p>
+          <div class="run-recap">
+            <div><small>SKY SCORE</small><strong id="final-score">0</strong></div>
+            <div><small>GEMS FOUND</small><strong><span class="recap-gem">◆</span> <span id="final-gems">0</span></strong></div>
+          </div>
+          <p id="save-status" class="save-status" role="status" aria-live="polite" data-testid="save-status">Your run is ready.</p>
+          <button id="restart-button" class="button button-primary" type="button" data-testid="restart-button"><span>One more leap</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+          <button class="leaderboard-link gameover-leaderboard" type="button" aria-controls="leaderboard-panel" data-testid="gameover-leaderboard-button"><span class="trophy" aria-hidden="true">♜</span> See the sky league <span class="leaderboard-link-arrow" aria-hidden="true">→</span></button>
+        </section>
+
+        <section id="leaderboard-panel" class="leaderboard-panel" role="dialog" aria-modal="true" aria-labelledby="leaderboard-title" hidden data-testid="leaderboard-panel">
+          <div class="leaderboard-head">
+            <div><div class="card-eyebrow">THE CLOUDLINE ARCHIPELAGO</div><h2 id="leaderboard-title">Sky league</h2></div>
+            <button id="leaderboard-close" class="icon-button close-button" type="button" aria-label="Close leaderboard" data-testid="leaderboard-close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          </div>
+          <div class="leaderboard-tabs" aria-label="Leaderboard categories">
+            <span class="leader-tab is-active">Sky score</span><span class="leader-tab">Gems collected</span>
+          </div>
+          <div class="leaderboard-column-labels"><span>EXPLORER</span><span>BEST SKY SCORE</span></div>
+          <ol id="leaderboard-list" class="leaderboard-list" aria-live="polite" data-testid="leaderboard-list">
+            <li class="leaderboard-empty"><span class="empty-spark" aria-hidden="true">✦</span><span>First footprints go here.<br><small>Play a run to join the sky league.</small></span></li>
+          </ol>
+          <div class="leaderboard-foot"><span class="sync-mark" aria-hidden="true">↻</span> Scores from Start.ng</div>
+        </section>
+
+        <div id="toast" class="toast" role="status" aria-live="polite" hidden data-testid="toast"></div>
+
+        <nav class="touch-controls" aria-label="Touch movement controls" data-testid="touch-controls">
+          <div class="direction-controls">
+            <button id="left-button" class="control-button direction-button" type="button" aria-label="Move left" data-testid="left-button"><span aria-hidden="true">←</span></button>
+            <button id="right-button" class="control-button direction-button" type="button" aria-label="Move right" data-testid="right-button"><span aria-hidden="true">→</span></button>
+          </div>
+          <button id="jump-button" class="control-button jump-button" type="button" aria-label="Jump" data-testid="jump-button"><span class="jump-symbol" aria-hidden="true">↑</span><span>JUMP</span></button>
+        </nav>
+        <div class="keyboard-controls" aria-label="Keyboard controls"><kbd>A</kbd><kbd>D</kbd><span>move</span><kbd>SPACE</kbd><span>jump</span></div>
+      </div>
+    </main>
+  </body>
+</html>
