@@ -1,0 +1,16 @@
+{
+  "leaderboard": {
+    "stats": [
+      {
+        "key": "score",
+        "label": "Sky score",
+        "order": "highest"
+      },
+      {
+        "key": "gems",
+        "label": "Gems collected",
+        "order": "highest"
+      }
+    ]
+  }
+}
